@@ -8,7 +8,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <h2 className='
           font-bold
-          text-2xl
+          text-3xl
           text-center
           text-blue-400
         '>
