@@ -10,7 +10,7 @@ function App() {
           font-bold
           text-3xl
           text-center
-          text-blue-400
+          text-white
         '>
           React Image Generator
         </h2>
