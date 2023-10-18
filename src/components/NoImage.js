@@ -8,9 +8,10 @@ const NoImage = () => {
         items-center
         mt-10
         mb-10
-        text-white
-        text-2xl
+        text-gray-400
+        text-xl
         font-bold
+        italic
     '>
       No Image Found
     </div>

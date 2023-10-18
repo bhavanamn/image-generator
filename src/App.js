@@ -8,10 +8,12 @@ import './App.css';
 function App() {
   const [images, setImages] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [searched, setSearched] = useState(false); // Tambahkan state untuk menandai apakah telah dilakukan pencarian
 
   const onSearchSubmit = async () => { 
     const result = await searchImages(searchTerm);
     setImages(result);
+    setSearched(true); // Set state 'searched' menjadi true setelah pencarian dilakukan
   }
 
   return (
@@ -36,7 +38,8 @@ function App() {
             Search
           </button>
         </div>
-        {images.length === 0 ? <NoImage /> : <ImageList images={images} />}
+        {searched && images.length === 0 && <NoImage />} {/* Tampilkan NoImage hanya jika sudah dilakukan pencarian dan tidak ada hasil */}
+        {images.length > 0 && <ImageList images={images} />} {/* Tampilkan ImageList jika ada hasil */}
       </header>
     </div>
   );
