@@ -15,7 +15,7 @@ const Copyright = () => {
     >
       &copy; Created by <a href='https://ahmadammarm.github.io/ammar' target='blank'
       className='
-        hover:text-gray-700
+        hover:text-blue-700
         transition
         duration-300
         ease-in-out
