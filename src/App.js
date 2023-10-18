@@ -5,6 +5,7 @@ import searchImages from './api/api';
 import logo from './logo.svg';
 import './App.css';
 import Loader from './components/Loader';
+import Copyright from './components/Copyright';
 
 function App() {
   const [images, setImages] = useState([]);
@@ -58,6 +59,7 @@ function App() {
         {loading && <Loader />}
         {searched && images.length === 0 && !loading && <NoImage />}
         {images.length > 0 && <ImageList images={images} />}
+        <Copyright />
       </header>
     </div>
   );
