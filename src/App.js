@@ -4,16 +4,25 @@ import NoImage from './components/NoImage';
 import searchImages from './api/api';
 import logo from './logo.svg';
 import './App.css';
+import Loader from './components/Loader';
 
 function App() {
   const [images, setImages] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searched, setSearched] = useState(false);
+  const [loading, setLoading] = useState(false); // Tambahkan state untuk loading
 
   const onSearchSubmit = async () => { 
+    setLoading(true); // Aktifkan loader
+
     const result = await searchImages(searchTerm);
     setImages(result);
     setSearched(true); 
+
+    // Tunggu 3 detik sebelum menonaktifkan loader
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
   }
 
   const handleKeyPress = (e) => {
@@ -29,6 +38,7 @@ function App() {
         <h2 className='font-bold text-3xl text-center text-white'>
           React Image Generator
         </h2>
+        
         <div className='flex justify-center items-center mt-10'>
           <input 
             type='text' 
@@ -45,7 +55,8 @@ function App() {
             Search
           </button>
         </div>
-        {searched && images.length === 0 && <NoImage />}
+        {loading && <Loader />}
+        {searched && images.length === 0 && !loading && <NoImage />}
         {images.length > 0 && <ImageList images={images} />}
       </header>
     </div>
