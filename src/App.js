@@ -55,7 +55,7 @@ function App() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               onKeyPress={handleKeyPress}
-              placeholder="Search Image"
+              placeholder="Search Image ex. Cats, Cars, etc."
             />
             {searchTerm && (
               <button
