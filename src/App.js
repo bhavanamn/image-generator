@@ -8,12 +8,18 @@ import './App.css';
 function App() {
   const [images, setImages] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [searched, setSearched] = useState(false); // Tambahkan state untuk menandai apakah telah dilakukan pencarian
+  const [searched, setSearched] = useState(false);
 
   const onSearchSubmit = async () => { 
     const result = await searchImages(searchTerm);
     setImages(result);
-    setSearched(true); // Set state 'searched' menjadi true setelah pencarian dilakukan
+    setSearched(true); 
+  }
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      onSearchSubmit();
+    }
   }
 
   return (
@@ -29,6 +35,7 @@ function App() {
             className='border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none'
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            onKeyPress={handleKeyPress}
             placeholder='Search Image'
           />
           <button 
@@ -38,8 +45,8 @@ function App() {
             Search
           </button>
         </div>
-        {searched && images.length === 0 && <NoImage />} {/* Tampilkan NoImage hanya jika sudah dilakukan pencarian dan tidak ada hasil */}
-        {images.length > 0 && <ImageList images={images} />} {/* Tampilkan ImageList jika ada hasil */}
+        {searched && images.length === 0 && <NoImage />}
+        {images.length > 0 && <ImageList images={images} />}
       </header>
     </div>
   );
