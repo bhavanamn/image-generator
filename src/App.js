@@ -7,6 +7,7 @@ import './App.css';
 import Loader from './components/Loader';
 import Copyright from './components/Copyright';
 import { FiRefreshCw } from 'react-icons/fi';
+import { AiOutlineClose } from 'react-icons/ai';
 
 function App() {
   const [images, setImages] = useState([]);
@@ -22,7 +23,6 @@ function App() {
     setImages(result);
     setSearched(true);
 
-    
     setTimeout(() => {
       setLoading(false);
       setLoadingComplete(true);
@@ -35,6 +35,10 @@ function App() {
     }
   }
 
+  const clearSearchTerm = () => {
+    setSearchTerm("");
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -44,14 +48,24 @@ function App() {
         </h2>
 
         <div className="flex flex-col items-center mt-10">
-          <input
-            type="text"
-            className="input-search border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none w-full max-w-md"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            onKeyPress={handleKeyPress}
-            placeholder="Search Image"
-          />
+          <div className="relative w-full max-w-md">
+            <input
+              type="text"
+              className="input-search border-2 border-gray-300 bg-white h-10 px-5 pr-10 rounded-lg text-sm focus:outline-none w-full"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onKeyPress={handleKeyPress}
+              placeholder="Search Image"
+            />
+            {searchTerm && (
+              <button
+                className="absolute right-2 top-2"
+                onClick={clearSearchTerm}
+              >
+                <AiOutlineClose className="text-gray-500 mt-1" />
+              </button>
+            )}
+          </div>
           <div className="mt-2 flex justify-center space-x-2">
             <button
               className="button-search bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
