@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={logo} className="App-logo mt-5" alt="logo" />
         <h2 className='font-bold text-3xl text-center text-white'>
           React Image Generator
         </h2>
