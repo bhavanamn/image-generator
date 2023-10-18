@@ -6,6 +6,7 @@ import logo from './logo.svg';
 import './App.css';
 import Loader from './components/Loader';
 import Copyright from './components/Copyright';
+import {FiRefreshCw} from 'react-icons/fi';
 
 function App() {
   const [images, setImages] = useState([]);
@@ -54,6 +55,21 @@ function App() {
             onClick={onSearchSubmit}
           >
             Search
+          </button>
+          <button className='
+            ml-2 
+            bg-gray-500 
+            hover:bg-gray-700 
+            text-white 
+            font-bold 
+            py-2 
+            px-4 
+            rounded 
+            transition 
+            duration-300 
+            ease-in-out
+          '>
+            <FiRefreshCw className='text-2xl' onClick={() => window.location.reload()} />
           </button>
         </div>
         {loading && <Loader />}
