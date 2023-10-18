@@ -13,7 +13,7 @@ const NoImage = () => {
         font-bold
         italic
     '>
-      No Image Found
+      No Image Found !
     </div>
   )
 }
