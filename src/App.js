@@ -51,8 +51,8 @@ function App() {
           <div className="relative w-full max-w-md">
             <input
               type="text"
-              className="input-search border-2 border-gray-500 bg-gray-900 h-10 px-5 pr-10 rounded-lg text-sm w-full
-              focus:outline-none focus:border-white text-white
+              className="input-search border-2 border-gray-400 bg-gray-800 h-10 px-5 pr-10 rounded-lg text-sm w-full
+              focus:outline-none focus:border-white focus:bg-gray-900 text-white
               "
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
