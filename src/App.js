@@ -74,18 +74,24 @@ function App() {
               onHoverEnd={(e) => {}}
             >
               <button
-              className="button-search bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
-              onClick={onSearchSubmit}
-            >
-              Search
-            </button>
+                className="button-search bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
+                onClick={onSearchSubmit}
+              >
+                Search
+              </button>
             </motion.button>
-            <button className="button-refresh bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out">
-              <FiRefreshCw
-                className="text-2xl"
-                onClick={() => window.location.reload()}
-              />
-            </button>
+            <motion.button
+              whileHover={{ scale: 0.9 }}
+              onHoverStart={(e) => {}}
+              onHoverEnd={(e) => {}}
+            >
+              <button className="button-refresh bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out">
+                <FiRefreshCw
+                  className="text-2xl"
+                  onClick={() => window.location.reload()}
+                />
+              </button>
+            </motion.button>
           </div>
         </div>
         {loading && <Loader />}
