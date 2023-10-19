@@ -15,8 +15,6 @@ const ImageList = ({ images }) => {
     gap-4 
     mt-5 
     mb-5
-    border-2
-    border-gray-300
     rounded-lg
     p-5
     '>

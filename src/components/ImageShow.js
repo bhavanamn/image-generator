@@ -1,14 +1,30 @@
-import React from 'react'
+import React from "react";
 
-
-const ImageShow = ({
-    image
-}) => {
+const ImageShow = ({ image }) => {
   return (
-    <div className='show-image'>
-        <img src={image.urls.small} alt={image.alt_description} />
+    <div
+      className="
+        flex
+        justify-center
+        items-center
+        border-2
+        border-gray-300
+        rounded-lg
+        p-5
+        cursor-pointer
+    "
+    >
+      <img
+        src={image.urls.small}
+        alt={image.alt_description}
+        className="
+                rounded-lg
+                max-w-full
+                h-auto
+            "
+      />
     </div>
-  )
-}
+  );
+};
 
-export default ImageShow
+export default ImageShow;
