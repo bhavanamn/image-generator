@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const ImageShow = ({ image }) => {
   return (
@@ -11,17 +12,18 @@ const ImageShow = ({ image }) => {
         border-gray-300
         rounded-lg
         p-5
-        cursor-pointer
     "
     >
-      <img
+      <motion.img
         src={image.urls.small}
         alt={image.alt_description}
         className="
                 rounded-lg
                 max-w-full
                 h-auto
+                cursor-pointer
             "
+        whileHover={{ scale: 0.9 }}
       />
     </div>
   );
