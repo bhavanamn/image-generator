@@ -24,6 +24,7 @@ const ImageShow = ({ image }) => {
                 cursor-pointer
             "
         whileHover={{ scale: 0.9 }}
+        whileTap={{ scale: 0.8 }}
       />
     </div>
   );
