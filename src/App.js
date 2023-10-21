@@ -34,8 +34,8 @@ function App() {
     if (result.length === 0) {
       setLoading(false);
       setLoadingComplete(true);
-      setNoImageFound(true); // Menambahkan penanganan komponen NoImage ditemukan
       toast.error("No images found");
+      setNoImageFound(true);
       return;
     }
 
@@ -45,7 +45,7 @@ function App() {
     setTimeout(() => {
       setLoading(false);
       setLoadingComplete(true);
-      toast.success("Images loaded successfully");
+      toast.success("Images search successfully");
     }, 3000);
   };
 
@@ -57,14 +57,14 @@ function App() {
 
   const clearSearchTerm = () => {
     setSearchTerm("");
-    setNoImageFound(false); // Menghilangkan komponen NoImage saat menghapus input
+    setNoImageFound(false);
   };
 
   return (
     <div className="App">
       <header className="App-header">
-        <DarkMode />
         <img src={logo} className="App-logo mt-5" alt="logo" />
+        <DarkMode />
         <h2 className="header-text font-bold text-3xl text-center text-white">
           React Image Generator
         </h2>
