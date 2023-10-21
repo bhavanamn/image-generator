@@ -64,10 +64,10 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo mt-5" alt="logo" />
-        <DarkMode />
         <h2 className="header-text font-bold text-3xl text-center text-white">
           React Image Generator
         </h2>
+        <DarkMode />
         <div className="flex flex-col items-center mt-10">
           <div className="relative w-full max-w-md">
             <input
