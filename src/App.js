@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FiRefreshCw } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
 import { motion } from "framer-motion";
@@ -19,10 +19,6 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [loadingComplete, setLoadingComplete] = useState(false);
   const [noImageFound, setNoImageFound] = useState(false);
-
-  useEffect(() => {
-    toast.success("Refresh Successfully");
-  }, []);
 
   const onSearchSubmit = async () => {
     setLoading(true);
@@ -108,7 +104,7 @@ function App() {
           </div>
         </div>
         {loading && <Loader />}
-        {searched && images.length === 0 && !loading && noImageFound && <NoImage />}
+        {searched && images.length === 0 && !loading && noImageFound && <NoImage />} {/* Menggunakan kondisi noImageFound */}
         {loadingComplete && images.length > 0 && <ImageList images={images} />}
         <Copyright />
       </header>
