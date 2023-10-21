@@ -1,4 +1,9 @@
 import React, { useState } from "react";
+import { FiRefreshCw } from "react-icons/fi";
+import { AiOutlineClose } from "react-icons/ai";
+import { motion } from "framer-motion";
+import { Toaster, toast } from "react-hot-toast";
+import DarkMode from "./components/DarkMode/DarkMode";
 import ImageList from "./components/ImageList";
 import NoImage from "./components/NoImage";
 import searchImages from "./api/api";
@@ -6,10 +11,6 @@ import logo from "./logo.svg";
 import "./App.css";
 import Loader from "./components/Loader";
 import Copyright from "./components/Copyright";
-import { FiRefreshCw } from "react-icons/fi";
-import { AiOutlineClose } from "react-icons/ai";
-import { motion } from "framer-motion";
-import DarkMode from "./components/DarkMode/DarkMode";
 
 function App() {
   const [images, setImages] = useState([]);
@@ -21,13 +22,28 @@ function App() {
   const onSearchSubmit = async () => {
     setLoading(true);
 
+    if (!searchTerm) {
+      toast.error("Please enter a search term");
+      setLoading(false);
+      return;
+    }
+
     const result = await searchImages(searchTerm);
+
+    if (result.length === 0) {
+      setLoading(false);
+      setLoadingComplete(true);
+      toast.error("No images found");
+      return;
+    }
+
     setImages(result);
     setSearched(true);
 
     setTimeout(() => {
       setLoading(false);
       setLoadingComplete(true);
+      toast.success("Images loaded successfully");
     }, 3000);
   };
 
@@ -44,7 +60,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <DarkMode/>
+        <DarkMode />
         <img src={logo} className="App-logo mt-5" alt="logo" />
         <h2 className="header-text font-bold text-3xl text-center text-white">
           React Image Generator
@@ -53,28 +69,20 @@ function App() {
           <div className="relative w-full max-w-md">
             <input
               type="text"
-              className="input-search border-2 border-gray-400 bg-gray-800 h-10 px-5 pr-10 rounded-lg text-sm w-full text-white
-              "
+              className="input-search border-2 border-gray-400 bg-gray-800 h-10 px-5 pr-10 rounded-lg text-sm w-full text-white"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               onKeyPress={handleKeyPress}
               placeholder="Search Image ex. Cats, Cars, etc."
             />
             {searchTerm && (
-              <button
-                className="absolute right-2 top-2"
-                onClick={clearSearchTerm}
-              >
+              <button className="absolute right-2 top-2" onClick={clearSearchTerm}>
                 <AiOutlineClose className="text-gray-500 mt-1" />
               </button>
             )}
           </div>
           <div className="mt-2 flex justify-center space-x-2">
-            <motion.button
-              whileHover={{ scale: 0.9 }}
-              onHoverStart={(e) => {}}
-              onHoverEnd={(e) => {}}
-            >
+            <motion.button whileHover={{ scale: 0.9 }}>
               <button
                 className="button-search bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
                 onClick={onSearchSubmit}
@@ -82,16 +90,12 @@ function App() {
                 Search
               </button>
             </motion.button>
-            <motion.button
-              whileHover={{ scale: 0.9 }}
-              onHoverStart={(e) => {}}
-              onHoverEnd={(e) => {}}
-            >
-              <button className="button-refresh bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out">
-                <FiRefreshCw
-                  className="text-2xl"
-                  onClick={() => window.location.reload()}
-                />
+            <motion.button whileHover={{ scale: 0.9 }}>
+              <button
+                className="button-refresh bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
+                onClick={() => window.location.reload()}
+              >
+                <FiRefreshCw className="text-2xl" />
               </button>
             </motion.button>
           </div>
@@ -101,6 +105,7 @@ function App() {
         {loadingComplete && images.length > 0 && <ImageList images={images} />}
         <Copyright />
       </header>
+      <Toaster />
     </div>
   );
 }
