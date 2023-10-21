@@ -9,6 +9,7 @@ import Copyright from "./components/Copyright";
 import { FiRefreshCw } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
 import { motion } from "framer-motion";
+import DarkMode from "./components/DarkMode/DarkMode";
 
 function App() {
   const [images, setImages] = useState([]);
@@ -43,8 +44,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <DarkMode/>
         <img src={logo} className="App-logo mt-5" alt="logo" />
-        <h2 className="font-bold text-3xl text-center text-white">
+        <h2 className="header-text font-bold text-3xl text-center text-white">
           React Image Generator
         </h2>
         <div className="flex flex-col items-center mt-10">
