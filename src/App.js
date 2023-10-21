@@ -18,6 +18,7 @@ function App() {
   const [searched, setSearched] = useState(false);
   const [loading, setLoading] = useState(false);
   const [loadingComplete, setLoadingComplete] = useState(false);
+  const [noImageFound, setNoImageFound] = useState(false);
 
   const onSearchSubmit = async () => {
     setLoading(true);
@@ -33,6 +34,7 @@ function App() {
     if (result.length === 0) {
       setLoading(false);
       setLoadingComplete(true);
+      setNoImageFound(true); // Menambahkan penanganan komponen NoImage ditemukan
       toast.error("No images found");
       return;
     }
@@ -55,6 +57,7 @@ function App() {
 
   const clearSearchTerm = () => {
     setSearchTerm("");
+    setNoImageFound(false); // Menghilangkan komponen NoImage saat menghapus input
   };
 
   return (
@@ -101,7 +104,7 @@ function App() {
           </div>
         </div>
         {loading && <Loader />}
-        {searched && images.length === 0 && !loading && <NoImage />}
+        {searched && images.length === 0 && !loading && noImageFound && <NoImage />} {/* Menggunakan kondisi noImageFound */}
         {loadingComplete && images.length > 0 && <ImageList images={images} />}
         <Copyright />
       </header>
