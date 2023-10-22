@@ -1,5 +1,5 @@
-/* eslint-disable jsx-a11y/img-redundant-alt */
-import React, { useState } from "react";
+
+import React, { useState, useEffect } from "react";
 import { FiRefreshCw } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
 import { motion } from "framer-motion";
@@ -23,6 +23,16 @@ function App() {
   const [noImageFound, setNoImageFound] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [popupImageUrl, setPopupImageUrl] = useState("");
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const isRefreshed = urlParams.get("refreshed");
+
+    if (isRefreshed) {
+      toast.success("Refresh successfully");
+      window.history.replaceState(null, null, window.location.pathname);
+    }
+  }, []);
 
   const onSearchSubmit = async () => {
     setLoading(true);
