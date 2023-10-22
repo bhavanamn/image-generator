@@ -30,7 +30,16 @@ const ImagePopup = ({ imageUrl, onClose }) => {
             "
             >Download</button>
           <button
-            className="text-gray-700 hover:text-gray-900"
+            className="
+            bg-red-500
+            hover:bg-red-700
+            text-white
+            transition
+            duration-300
+            ease-in-out
+            rounded
+            p-2
+            "
             onClick={onClose}
           >
             <svg
