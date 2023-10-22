@@ -1,9 +1,15 @@
 import React from 'react';
 import ImageShow from './ImageShow';
 
-const ImageList = ({ images }) => {
+const ImageList = ({ images, onImageClick }) => {
   const renderedImages = images.map((image) => {
-    return <ImageShow key={image.id} image={image} />;
+    return (
+      <ImageShow 
+        key={image.id} 
+        image={image} 
+        onImageClick={onImageClick}
+      />
+    );
   });
 
   return (
