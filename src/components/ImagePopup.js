@@ -4,8 +4,31 @@ import React from "react";
 const ImagePopup = ({ imageUrl, onClose }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50">
-      <div className="popup bg-white p-6 rounded-lg shadow-lg">
-        <div className="flex justify-end">
+      <div className="bg-white 
+      p-6 
+      rounded-lg 
+      shadow-lg
+      ">
+        <div className="
+        flex
+        justify-between
+        items-center
+        
+        ">
+          <button className=" 
+            mr-2
+            bg-blue-500
+            hover:bg-blue-700
+            text-white
+            font-bold
+            py-2
+            px-4
+            rounded
+            transition
+            duration-300
+            ease-in-out
+            "
+            >Download</button>
           <button
             className="text-gray-700 hover:text-gray-900"
             onClick={onClose}
