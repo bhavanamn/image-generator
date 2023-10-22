@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable jsx-a11y/img-redundant-alt */
+import React, { useState } from "react";
 import { FiRefreshCw } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
 import { motion } from "framer-motion";
@@ -11,6 +12,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import Loader from "./components/Loader";
 import Copyright from "./components/Copyright";
+import ImagePopup from "./components/ImagePopup";
 
 function App() {
   const [images, setImages] = useState([]);
@@ -19,20 +21,8 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [loadingComplete, setLoadingComplete] = useState(false);
   const [noImageFound, setNoImageFound] = useState(false);
-  // Membuat untuk component popup muncul ketika gambar di klik
   const [showPopup, setShowPopup] = useState(false);
-
-
-
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const isRefreshed = urlParams.get("refreshed");
-
-    if (isRefreshed) {
-      toast.success("Refresh successfully");
-      window.history.replaceState(null, null, window.location.pathname);
-    }
-  }, []);
+  const [popupImageUrl, setPopupImageUrl] = useState("");
 
   const onSearchSubmit = async () => {
     setLoading(true);
@@ -63,6 +53,16 @@ function App() {
     }, 3000);
   };
 
+  const handleImageClick = (imageUrl) => {
+    setShowPopup(true);
+    setPopupImageUrl(imageUrl);
+  };
+
+  const closePopup = () => {
+    setShowPopup(false);
+    setPopupImageUrl("");
+  };
+
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       onSearchSubmit();
@@ -77,10 +77,6 @@ function App() {
     setSearchTerm("");
     setNoImageFound(false);
   };
-
-  const handlePopup = () => {
-    setShowPopup(true);
-  }
 
   return (
     <div className="App">
@@ -101,7 +97,10 @@ function App() {
               placeholder="Search Image ex. Cats, Cars, etc."
             />
             {searchTerm && (
-              <button className="absolute right-2 top-2" onClick={clearSearchTerm}>
+              <button
+                className="absolute right-2 top-2"
+                onClick={clearSearchTerm}
+              >
                 <AiOutlineClose className="text-gray-500 mt-1" />
               </button>
             )}
@@ -126,8 +125,15 @@ function App() {
           </div>
         </div>
         {loading && <Loader />}
-        {searched && images.length === 0 && !loading && noImageFound && <NoImage />}
-        {loadingComplete && images.length > 0 && <ImageList images={images} />}
+        {searched && images.length === 0 && !loading && noImageFound && (
+          <NoImage />
+        )}
+        {loadingComplete && images.length > 0 && (
+          <ImageList images={images} onImageClick={handleImageClick} />
+        )}
+        {showPopup && (
+          <ImagePopup imageUrl={popupImageUrl} onClose={closePopup} />
+        )}
         <Copyright />
       </header>
       <Toaster />
