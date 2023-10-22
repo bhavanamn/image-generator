@@ -1,7 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const ImageShow = ({ image }) => {
+const ImageShow = ({ image, onImageClick }) => {
+  const handleImageClick = () => {
+    if(onImageClick) {
+      onImageClick(image.urls.small);
+    }
+  };
+
   return (
     <div
       className="
@@ -24,6 +30,7 @@ const ImageShow = ({ image }) => {
                 cursor-pointer
             "
         whileTap={{ scale: 0.9 }}
+        onClick={handleImageClick}
       />
     </div>
   );
