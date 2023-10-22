@@ -26,7 +26,6 @@ function App() {
 
     if (isRefreshed) {
       toast.success("Refresh successfully");
-      // Hapus parameter query 'refreshed' setelah menampilkan toast
       window.history.replaceState(null, null, window.location.pathname);
     }
   }, []);
