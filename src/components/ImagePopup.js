@@ -6,9 +6,9 @@ import { motion } from "framer-motion";
 const ImagePopup = ({ imageUrl, onClose }) => {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
+      initial={{ scale: 0.5 }}
+      animate={{ scale: 1 }}
+      transition={{ duration: 0.2, ease: "easeInOut" }}
       className="fixed inset-0 flex items-center justify-center z-50"
     >
       <div className="popup bg-white p-6 rounded-lg shadow-lg">
