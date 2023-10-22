@@ -55,6 +55,11 @@ function App() {
     }
   };
 
+  const handleRefresh = () => {
+    window.location.reload();
+    toast.success("Refresh successfully");
+  }
+
   const clearSearchTerm = () => {
     setSearchTerm("");
     setNoImageFound(false);
@@ -96,7 +101,7 @@ function App() {
             <motion.button whileHover={{ scale: 0.9 }}>
               <button
                 className="button-refresh bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
-                onClick={() => window.location.reload()}
+                onClick={handleRefresh}
               >
                 <FiRefreshCw className="text-2xl" />
               </button>
