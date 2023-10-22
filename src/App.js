@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FiRefreshCw } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
 import { motion } from "framer-motion";
@@ -19,6 +19,17 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [loadingComplete, setLoadingComplete] = useState(false);
   const [noImageFound, setNoImageFound] = useState(false);
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const isRefreshed = urlParams.get("refreshed");
+
+    if (isRefreshed) {
+      toast.success("Refresh successfully");
+      // Hapus parameter query 'refreshed' setelah menampilkan toast
+      window.history.replaceState(null, null, window.location.pathname);
+    }
+  }, []);
 
   const onSearchSubmit = async () => {
     setLoading(true);
@@ -45,7 +56,7 @@ function App() {
     setTimeout(() => {
       setLoading(false);
       setLoadingComplete(true);
-      toast.success("Images search successfully");
+      toast.success("Images search successful");
     }, 3000);
   };
 
@@ -56,9 +67,8 @@ function App() {
   };
 
   const handleRefresh = () => {
-    window.location.reload();
-    toast.success("Refresh successfully");
-  }
+    window.location.href = `?refreshed=true`;
+  };
 
   const clearSearchTerm = () => {
     setSearchTerm("");
@@ -109,7 +119,7 @@ function App() {
           </div>
         </div>
         {loading && <Loader />}
-        {searched && images.length === 0 && !loading && noImageFound && <NoImage />} {/* Menggunakan kondisi noImageFound */}
+        {searched && images.length === 0 && !loading && noImageFound && <NoImage />}
         {loadingComplete && images.length > 0 && <ImageList images={images} />}
         <Copyright />
       </header>
