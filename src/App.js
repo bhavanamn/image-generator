@@ -19,6 +19,10 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [loadingComplete, setLoadingComplete] = useState(false);
   const [noImageFound, setNoImageFound] = useState(false);
+  // Membuat untuk component popup muncul ketika gambar di klik
+  const [showPopup, setShowPopup] = useState(false);
+
+
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -73,6 +77,10 @@ function App() {
     setSearchTerm("");
     setNoImageFound(false);
   };
+
+  const handlePopup = () => {
+    setShowPopup(true);
+  }
 
   return (
     <div className="App">
