@@ -1,15 +1,22 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 
 const ImagePopup = ({ imageUrl, onClose }) => {
+  useEffect(() => {
+    document.body.classList.add("overflow-hidden");
+
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, []);
+
   return (
     <motion.div
       initial={{ scale: 0.5 }}
       animate={{ scale: 1 }}
       transition={{ duration: 0.2, ease: "easeInOut" }}
-      className="fixed inset-0 flex items-center justify-center z-50"
+      className="fixed inset-0 flex items-center justify-center z-50 overflow-auto"
     >
       <div className="popup bg-white p-6 rounded-lg shadow-lg">
         <div className="flex justify-between">
