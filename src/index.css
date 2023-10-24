@@ -16,3 +16,12 @@
     transition: all 0.1s ease-in-out;
 }
 
+.overlay {
+    @apply fixed inset-0 bg-black opacity-50 z-50 pointer-events-none;
+  }
+  
+  .popup-open {
+    @apply overflow-hidden;
+  }
+  
+

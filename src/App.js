@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { FiRefreshCw } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
@@ -88,7 +87,6 @@ function App() {
     setNoImageFound(false);
   };
 
-
   return (
     <div className="App">
       <header className="App-header">
@@ -143,7 +141,10 @@ function App() {
           <ImageList images={images} onImageClick={handleImageClick} />
         )}
         {showPopup && (
-          <ImagePopup imageUrl={popupImageUrl} onClose={closePopup} />
+          <>
+            <div className="overlay"></div>
+            <ImagePopup imageUrl={popupImageUrl} onClose={closePopup} />
+          </>
         )}
         <Copyright />
       </header>
