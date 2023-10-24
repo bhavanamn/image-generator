@@ -18,7 +18,12 @@ const ImagePopup = ({ imageUrl, onClose }) => {
       transition={{ duration: 0.2, ease: "easeInOut" }}
       className="fixed inset-0 flex items-center justify-center z-50 overflow-auto"
     >
-      <div className="popup bg-white p-6 rounded-lg shadow-lg">
+      <div className="
+      bg-white
+      p-6 rounded-lg 
+      shadow-lg
+      "
+      >
         <div className="flex justify-between">
           <button className="mr-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out">
             Download
@@ -43,8 +48,8 @@ const ImagePopup = ({ imageUrl, onClose }) => {
             </svg>
           </button>
         </div>
-        <div className="text-center mt-4">
-          <img src={imageUrl} alt="Popup Image" className="max-w-full h-auto" />
+        <div className="text-center mt-4 h-3/4">
+          <img src={imageUrl} alt="Popup Image" />
         </div>
       </div>
     </motion.div>
