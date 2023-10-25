@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
+import toast from "react-hot-toast";
 
 const ImagePopup = ({ imageUrl, onClose }) => {
   useEffect(() => {
@@ -11,13 +12,19 @@ const ImagePopup = ({ imageUrl, onClose }) => {
     };
   }, []);
 
-  const downloadImage = () => {
-    const link = document.createElement("a");
-    link.href = imageUrl;
-    link.download = "image.jpg";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const handleDownload = () => {
+    fetch(imageUrl)
+      .then(response => response.blob())
+      .then(blob => {
+        const url = window.URL.createObjectURL(new Blob([blob]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'react-image-generator.jpg');
+        document.body.appendChild(link);
+        link.click();
+        link.parentNode.removeChild(link);
+      });
+      toast.success("Image downloaded successfully");
   };
 
   return (
@@ -34,14 +41,12 @@ const ImagePopup = ({ imageUrl, onClose }) => {
       "
       >
         <div className="flex justify-between">
-          <a
-            href={imageUrl}
-            download="image.jpg"
+          <button
             className="mr-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
-            onClick={downloadImage}
+            onClick={handleDownload}
           >
             Download
-          </a>
+          </button>
           <button
             className="bg-red-500 hover:bg-red-700 text-white transition duration-300 ease-in-out rounded p-2"
             onClick={onClose}
@@ -71,3 +76,4 @@ const ImagePopup = ({ imageUrl, onClose }) => {
 };
 
 export default ImagePopup;
+
