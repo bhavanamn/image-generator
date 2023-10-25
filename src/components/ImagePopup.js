@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 
