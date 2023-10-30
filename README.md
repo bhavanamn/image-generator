@@ -33,20 +33,24 @@ We welcome contributions from the community. If you would like to contribute to 
    git checkout -b new-feature
    ```
 
-3. Make the necessary changes.
-4. Commit your changes:
+3. Before that u must go to in this link [Getting Unsplash API Key](https://unsplash.com/developers). After u get the API Key u can fork this repository and put down ur API Key in ur .env file like this format
+   ```
+   REACT_APP_UNSPLASH_CLIENT_ID=YOUR API KEY
+   ```
+4. Make the necessary changes.
+5. Commit your changes:
 
    ```bash
    git commit -m "Add new feature"
    ```
 
-5. Push to your branch:
+6. Push to your branch:
 
    ```bash
    git push origin new-feature
    ```
 
-6. Create a Pull Request to the original repository.
+7. Create a Pull Request to the original repository.
 
 ## Contributors
 
