@@ -1,4 +1,4 @@
-# React Image Genrator
+# React Image Generator
 <p>Hi everyone ! <br>
 This is my repository about React Image Generator<br>
 Hope u happy to used it</p>
