@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FiRefreshCw } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
-import { motion } from "framer-motion";
 import { Toaster, toast } from "react-hot-toast";
 import DarkMode from "./components/DarkMode/DarkMode";
 import ImageList from "./components/ImageList";
@@ -12,6 +11,7 @@ import "./App.css";
 import Loader from "./components/Loader";
 import Copyright from "./components/Copyright";
 import ImagePopup from "./components/ImagePopup";
+import { Outlet } from "react-router-dom";
 
 function App() {
   const [images, setImages] = useState([]);
@@ -21,7 +21,7 @@ function App() {
   const [loadingComplete, setLoadingComplete] = useState(false);
   const [noImageFound, setNoImageFound] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-  const [popupImageUrl, setPopupImageUrl] = useState("");
+  const [popupImageUrl, setPopupImageUrl] = useState();
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -115,22 +115,22 @@ function App() {
             )}
           </div>
           <div className="mt-2 flex justify-center space-x-2">
-            <motion.button whileHover={{ scale: 0.9 }}>
+            <button whileHover={{ scale: 0.9 }}>
               <button
                 className="button-search bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
                 onClick={onSearchSubmit}
               >
                 Search
               </button>
-            </motion.button>
-            <motion.button whileHover={{ scale: 0.9 }}>
+            </button>
+            <button whileHover={{ scale: 0.9 }}>
               <button
                 className="button-refresh bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
                 onClick={handleRefresh}
               >
                 <FiRefreshCw className="text-2xl" />
               </button>
-            </motion.button>
+            </button>
           </div>
         </div>
         {loading && <Loader />}
@@ -143,11 +143,12 @@ function App() {
         {showPopup && (
           <>
             <div className="overlay"></div>
-            <ImagePopup imageUrl={popupImageUrl} onClose={closePopup} />
+            <ImagePopup image={popupImageUrl} onClose={closePopup} />
           </>
         )}
         <Copyright />
       </header>
+      <Outlet/>
       <Toaster />
     </div>
   );

@@ -18,7 +18,7 @@ const DarkMode = () => {
 
 
     return (
-        <div className='dark_mode'>
+        <div className='dark_mode -z-10'>
             <input
                 className='dark_mode_input'
                 type='checkbox'
