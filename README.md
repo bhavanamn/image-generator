@@ -4,7 +4,7 @@ This is my repository about React Image Generator<br>
 Hope u happy to used it</p>
 
 <h3>About</h3>
-This project is a simple website that allows users to generate images based on the prompts they input. Users can enter words or phrases like "car", "cat", and the like, and the website will utilize deep learning techniques to generate images relevant to the provided prompt.
+This project is a simple website that allows users to generate images based on the prompts they input. Users can enter words or phrases like "car", "cat", and the like, and the website will utilize deep learning techniques to generate images relevant to the provided prompt. This project is open source, u can contributing in this project.
 <br>
 
 ### Techs in This Project
