@@ -10,6 +10,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import Loader from "./components/Loader";
 import Copyright from "./components/Copyright";
+import { getRandomWord } from "./components/Random";
 import ImagePopup from "./components/ImagePopup";
 import { Outlet } from "react-router-dom";
 
@@ -32,6 +33,11 @@ function App() {
       window.history.replaceState(null, null, window.location.pathname);
     }
   }, []);
+
+  // Get random word
+  const randomGenerate=()=>{
+    setSearchTerm(getRandomWord());
+  }
 
   const onSearchSubmit = async () => {
     setLoading(true);
@@ -121,6 +127,14 @@ function App() {
                 onClick={onSearchSubmit}
               >
                 Search
+              </button>
+            </button>
+            <button whileHover={{ scale: 0.9 }}>
+              <button
+                className="button-search bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
+                onClick={randomGenerate}
+              >
+                Random
               </button>
             </button>
             <button whileHover={{ scale: 0.9 }}>
