@@ -12,7 +12,7 @@ const Copyright = () => {
         font-semibold
         tracking-widest
     '
-    >Contributing in <a href='https://ahmadammarm.github.io/ammar' target='blank'
+    >Contributing in <a href='https://github.com/ahmadammarm/image-generator' target='blank'
       className='
         hover:text-blue-700
         transition
