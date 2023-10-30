@@ -1,9 +1,8 @@
-/* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useEffect } from "react";
-import { motion } from "framer-motion";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
-const ImagePopup = ({ imageUrl, onClose }) => {
+const ImagePopup = ({ image, onClose }) => {
   useEffect(() => {
     document.body.classList.add("overflow-hidden");
 
@@ -13,7 +12,7 @@ const ImagePopup = ({ imageUrl, onClose }) => {
   }, []);
 
   const handleDownload = () => {
-    fetch(imageUrl)
+    fetch(image)
       .then(response => response.blob())
       .then(blob => {
         const url = window.URL.createObjectURL(new Blob([blob]));
@@ -28,7 +27,7 @@ const ImagePopup = ({ imageUrl, onClose }) => {
   };
 
   return (
-    <motion.div
+    <div
       initial={{ scale: 0.5 }}
       animate={{ scale: 1 }}
       transition={{ duration: 0.2, ease: "easeInOut" }}
@@ -46,7 +45,13 @@ const ImagePopup = ({ imageUrl, onClose }) => {
             onClick={handleDownload}
           >
             Download
-          </button>
+          </button> 
+          <Link to={`/${image?.id}`} onClick={onClose}
+            className="mr-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
+            
+          >
+            Share
+          </Link>
           <button
             className="bg-red-500 hover:bg-red-700 text-white transition duration-300 ease-in-out rounded p-2"
             onClick={onClose}
@@ -68,12 +73,11 @@ const ImagePopup = ({ imageUrl, onClose }) => {
           </button>
         </div>
         <div className="text-center mt-4 h-3/4">
-          <img src={imageUrl} alt="Popup Image" />
+          <img src={image.urls.small} alt="Popup Image" />
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
 export default ImagePopup;
-

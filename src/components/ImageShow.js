@@ -1,10 +1,9 @@
 import React from "react";
-import { motion } from "framer-motion";
 
 const ImageShow = ({ image, onImageClick }) => {
   const handleImageClick = () => {
     if(onImageClick) {
-      onImageClick(image.urls.small);
+      onImageClick(image);
     }
   };
 
@@ -20,7 +19,7 @@ const ImageShow = ({ image, onImageClick }) => {
         p-5
     "
     >
-      <motion.img
+      <img
         src={image.urls.small}
         alt={image.alt_description}
         className="
