@@ -39,21 +39,27 @@ const ImagePopup = ({ image, onClose }) => {
       shadow-lg
       "
       >
-        <div className="flex justify-between">
+        <div className="
+        flex
+        justify-around
+        items-center
+        mb-4
+
+        ">
           <button
-            className="mr-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
+            className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
             onClick={handleDownload}
           >
             Download
           </button> 
           <Link to={`/${image?.id}`} onClick={onClose}
-            className="mr-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
             
           >
             Share
           </Link>
           <button
-            className="bg-red-500 hover:bg-red-700 text-white transition duration-300 ease-in-out rounded p-2"
+            className="ml-20 bg-red-500 hover:bg-red-700 text-white transition duration-300 ease-in-out rounded p-2"
             onClick={onClose}
           >
             <svg
