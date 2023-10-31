@@ -63,6 +63,9 @@ We welcome contributions from the community. If you would like to contribute to 
          <td align="center"><a href="https://github.com/javidsumra"><img src="https://avatars.githubusercontent.com/u/112365664?v=4" width="100px;" alt="Ahmad Ammar Musyaffa
 "/><br /><sub><b>Javid Sumra
 </b></sub></a><br /></td>
+         <td align="center"><a href="https://github.com/nishaaannnt"><img src="https://avatars.githubusercontent.com/u/100792085?v=4" width="100px;" alt="Ahmad Ammar Musyaffa
+"/><br /><sub><b>Nishant Dixit
+</b></sub></a><br /></td>
     </tr>
   </tbody>
 </table>
