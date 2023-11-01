@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { FiRefreshCw } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
 import { Toaster, toast } from "react-hot-toast";
-import DarkMode from "./components/DarkMode/DarkMode";
 import ImageList from "./components/ImageList";
 import NoImage from "./components/NoImage";
 import searchImages from "./api/api";
@@ -100,7 +99,6 @@ function App() {
         <h2 className="header-text font-bold text-3xl text-center text-white">
           React Image Generator
         </h2>
-        <DarkMode />
         <div className="flex flex-col items-center mt-10">
           <div className="relative w-full max-w-md">
             <input
