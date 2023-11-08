@@ -5,7 +5,6 @@ import { Toaster, toast } from "react-hot-toast";
 import ImageList from "./components/ImageList";
 import NoImage from "./components/NoImage";
 import searchImages from "./api/api";
-import logo from "./logo.svg";
 import "./App.css";
 import Loader from "./components/Loader";
 import Copyright from "./components/Copyright";
@@ -95,9 +94,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo mt-5" alt="logo" />
+        <img src="/logo.png" className="App-logo" alt="logo" />
         <h2 className="header-text font-bold text-3xl text-center text-white">
-          React Image Generator
+          Imagify
         </h2>
         <div className="flex flex-col items-center mt-10">
           <div className="relative w-full max-w-md">
@@ -129,7 +128,7 @@ function App() {
             </button>
             <button whileHover={{ scale: 0.9 }}>
               <button
-                className="button-search bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
+                className="button-search bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out"
                 onClick={randomGenerate}
               >
                 Random
